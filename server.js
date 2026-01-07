@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.get('/', (req, res) =>{
-    res.send('Hola amigos')
+    res.send('Server is running on backend')
 });
 
 // router routes
