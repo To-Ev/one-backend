@@ -3,7 +3,7 @@ const FormDB = require('../model/formDB');
 const handleLogout = async (req, res) =>{
     const Cookies = req.cookies;
 
-    if(!Cookies?.refreshToken) return res.status(400).json({ err: "Invalid Token" });
+    if(!Cookies?.refreshToken) return res.status(400).json({ err: "No token" });
     const refreshToken = Cookies.refreshToken;
     const node_env = process.env.NODE_ENV
 
@@ -12,7 +12,7 @@ const handleLogout = async (req, res) =>{
 
         if(!foundUser) {
             if(node_env === "PROD"){
-                res.clearCookie('refreshToken', {httpOnly: true, secure: true});
+                res.clearCookie('refreshToken', {httpOnly: true, secure: true, samesite: none});
             }else{
                 res.clearCookie('refreshToken', {httpOnly: true, secure: false});
             }
@@ -24,7 +24,7 @@ const handleLogout = async (req, res) =>{
         
         // send back a response
         if(node_env === "PROD"){
-            res.clearCookie('refreshToken', {httpOnly: true, secure: true});
+            res.clearCookie('refreshToken', {httpOnly: true, secure: true, samesite: none});
         }else{
             res.clearCookie('refreshToken', {httpOnly: true, secure: false});
         }
