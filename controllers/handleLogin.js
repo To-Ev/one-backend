@@ -44,7 +44,7 @@ const handleLogin = async (req, res) =>{
 
         const node_env = process.env.NODE_ENV
         if(node_env === "PROD"){
-            res.cookie('refreshToken', refreshToken, {httpOnly: true, secure: true, samesite: none, maxAge: 5 * 24 * 60 * 60 * 1000});
+            res.cookie('refreshToken', refreshToken, {httpOnly: true, secure: true, sameSite: "None", maxAge: 5 * 24 * 60 * 60 * 1000});
         }else{
             res.cookie('refreshToken', refreshToken, {httpOnly: true, secure: false, maxAge: 5 * 24 * 60 * 60 * 1000});
         }

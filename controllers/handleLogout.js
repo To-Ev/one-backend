@@ -12,7 +12,7 @@ const handleLogout = async (req, res) =>{
 
         if(!foundUser) {
             if(node_env === "PROD"){
-                res.clearCookie('refreshToken', {httpOnly: true, secure: true, samesite: none});
+                res.clearCookie('refreshToken', {httpOnly: true, secure: true, sameSite: "None"});
             }else{
                 res.clearCookie('refreshToken', {httpOnly: true, secure: false});
             }
@@ -24,7 +24,7 @@ const handleLogout = async (req, res) =>{
         
         // send back a response
         if(node_env === "PROD"){
-            res.clearCookie('refreshToken', {httpOnly: true, secure: true, samesite: none});
+            res.clearCookie('refreshToken', {httpOnly: true, secure: true, sameSite: "None"});
         }else{
             res.clearCookie('refreshToken', {httpOnly: true, secure: false});
         }
