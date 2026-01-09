@@ -9,6 +9,7 @@ const handleUploads = async (req, res, next) =>{
     if(!title || !description || !projectType || !files) return res.status(400).json({ err: "Please enter a valid input" });
 
     try{
+        console.log("Files received:", files);
         const PromiseImage = files.map( async (file) =>{
 
             const fileBuffer = getDataUri(file);
