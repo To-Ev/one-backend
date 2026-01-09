@@ -5,8 +5,9 @@ const handleUploads = require('../controllers/handleUploads');
 const UsersDB = require('../model/usersDB');
 const ROLES_LIST = require('../config/ROLES_LIST');
 const verifyRoles = require('../middleware/verifyRoles');
+const verifyJWT = require('../middleware/verifyJWT');
 
-router.post('/uploads', mStorage, verifyRoles(ROLES_LIST.User, ROLES_LIST.Admin), handleUploads);
+router.post('/uploads', mStorage, verifyJWT, verifyRoles(ROLES_LIST.User, ROLES_LIST.Admin), handleUploads);
 
 router.get('/uploads/all', async (req, res) =>{
 

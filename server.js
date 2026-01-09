@@ -36,7 +36,7 @@ app.use('/api', require('./routes/uploads'));
 app.use('/api', require('./routes/contact'));
 
 // verification
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use('/api', require('./routes/uploads'));
 
 app.use((err, req, res, next) => { 
