@@ -4,10 +4,9 @@ const verifyRoles = (...allowedRoles) =>{
         if(!req?.roles) return res.sendStatus(403);
         const rolesArray = [...allowedRoles];
         const roles = req.roles;
-        console.log(rolesArray);
-        console.log(roles);
 
-        roles.map( role => rolesArray.includes(role)).find( i => i === true);
+        const isAllowed = roles.map( role => rolesArray.includes(role)).find( i => i === true);
+        if(!isAllowed) return res.status(403).json({ message: 'Access Denied' });
         next()
     }
 }
