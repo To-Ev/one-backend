@@ -12,12 +12,11 @@ const verifyJWT = (req, res, next) =>{
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) =>{
             if(err) return res.status(403).json({ err: "Invalid Auth token!" })
-            req.username = decoded.userInfo.username,
-            req.roles = decoded.userInfo.roles
+            req.username = decoded.userInfo.username;
+            req.roles = decoded.userInfo.roles;
             next()
         }
     )
-    console.log("JWT verified:", req.username)
 }
 
 module.exports = verifyJWT
